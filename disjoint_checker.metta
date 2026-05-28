@@ -45,7 +45,16 @@
 (= (is-disjoint? $tuples)
    (not (all-reachable? $tuples)))
 
+; Tests
 
+; (11 12 13 14) is isolated → True
+!(test (is-disjoint? ((2 3 4) (1 2) (11 12 13 14) (2 1 5) (5 6 7))) True)
+
+; all connected via chain → False
+!(test (is-disjoint? ((1 2) (2 3) (3 4))) False)
+
+; two islands → True
+!(test (is-disjoint? ((1 2) (3 4))) True)
 
 ; Two conjuncts are connected if they share a variable name.
 
